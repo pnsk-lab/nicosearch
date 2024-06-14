@@ -29,7 +29,7 @@ const App: Component = () => {
       <div class="text-center text-gray-500 mt-10">
         <hr class="h-0.5 my-3"/>
         <p>NICOSEARCHは<a href="https://www.nicovideo.jp" class="underline">ニコニコ動画®︎</a>公式のものではありません。</p>
-        <p>Created by <a href="https://github.com/kombumori" class="underline">Kombumori</a> at <a href="https://github.com/pnsk-lab" class="underline">pnsk-lab</a></p>
+        <p><a href="https://github.com/pnsk-lab/nicosearch" class="underline">GitHub Repository</a></p>
       </div>
     </div>
   );
