@@ -18,7 +18,7 @@ const App: Component = () => {
     setResults(Object.values(DB).filter((video: video) => regex.test(video.title)))
   })
   return (
-    <div class="px-10 sm:px-20">
+    <div class="px-10 sm:px-20 mb-20">
       <h1 class="mt-20 w-full text-center text-3xl font-bold">NICOSEARCH</h1>
       <input onChange={(e) => setKeys(e.target.value.replace('　',' ').split(' '))} placeholder='検索ワード' class='mt-5 border border-gray-400 border-1 w-full h-14 px-5 rounded-full'/>
       <Show when={keys().length && keys()[0] != ""}>
