@@ -18,9 +18,9 @@ const App: Component = () => {
     setResults(Object.values(DB).filter((video: video) => regex.test(video.title)))
   })
   return (
-    <div class="container px-20">
+    <div class="px-10 sm:px-20">
       <h1 class="mt-20 w-full text-center text-3xl font-bold">NICOSEARCH</h1>
-      <input onInput={(e) => setKeys(e.target.value.replace('　',' ').split(' '))} placeholder='検索ワード' class='mt-5 border border-gray-400 border-1 w-full h-14 px-5 rounded-full'/>
+      <input onChange={(e) => setKeys(e.target.value.replace('　',' ').split(' '))} placeholder='検索ワード' class='mt-5 border border-gray-400 border-1 w-full h-14 px-5 rounded-full'/>
       <Show when={keys().length && keys()[0] != ""}>
         <For each={results()}>{(result) => 
           <Result video={result}/>
@@ -35,11 +35,11 @@ const Result: Component<{video: video}> = (props) => {
     <a href={`https://www.nicovideo.jp/watch_tmp/${props.video.id}`}>
       <div class="mt-5 w-full grid grid-cols-4 gap-2">
         <div class="grid col-span-2 sm:col-span-1">
-          <img src={props.video.thumbnail} alt="thumbnail" />
+          <img src={props.video.thumbnail} alt="thumbnail" class="m-auto"/>
         </div>
         <div class="grid col-span-2 sm:col-span-3">
           <p class="font-bold text-base sm:text-lg">{props.video.title}</p>
-          <p class="text-gray-800 text-sm sm:text-base">{props.video.registeredAt}</p>
+          <p class="text-gray-500 text-sm sm:text-base">{new Date(props.video.registeredAt).toLocaleDateString('ja-JP')}</p>
         </div>
       </div>
     </a>
