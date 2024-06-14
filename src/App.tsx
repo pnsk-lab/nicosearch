@@ -19,13 +19,18 @@ const App: Component = () => {
   })
   return (
     <div class="px-10 sm:px-20 mb-20">
-      <h1 class="mt-20 w-full text-center text-3xl font-bold">NICOSEARCH</h1>
+      <h1 class="mt-20 w-full text-center text-3xl font-cutiveMono">NICOSEARCH</h1>
       <input onChange={(e) => setKeys(e.target.value.replace('　',' ').split(' '))} placeholder='検索ワード' class='mt-5 border border-gray-400 border-1 w-full h-14 px-5 rounded-full'/>
       <Show when={keys().length && keys()[0] != ""}>
         <For each={results()}>{(result) => 
           <Result video={result}/>
         }</For>
       </Show>
+      <div class="text-center text-gray-500 mt-10">
+        <hr class="h-0.5 my-3"/>
+        <p>NICOSEARCHは<a href="https://www.nicovideo.jp" class="underline">ニコニコ動画®︎</a>公式のものではありません。</p>
+        <p>Created by <a href="https://github.com/kombumori" class="underline">Kombumori</a> at <a href="https://github.com/pnsk-lab" class="underline">pnsk-lab</a></p>
+      </div>
     </div>
   );
 };
