@@ -6,10 +6,13 @@
     "start": "vite",
     "dev": "vite",
     "build": "vite build",
-    "serve": "vite preview"
+    "serve": "vite preview",
+    "check": "biome check",
+    "format": "biome lint --fix && biome format --fix"
   },
   "license": "MIT",
   "devDependencies": {
+    "@biomejs/biome": "^1.8.1",
     "autoprefixer": "^10.4.19",
     "postcss": "^8.4.38",
     "solid-devtools": "^0.29.2",
