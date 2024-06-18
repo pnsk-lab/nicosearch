@@ -6,7 +6,9 @@ type video = {
   id: string
   title: string
   registeredAt: string
-  thumbnail: string
+  thumbnail: {
+    url: string
+  }
 }
 
 const App: Component = () => {
@@ -61,7 +63,7 @@ const Result: Component<{ video: video }> = (props) => {
     <a href={`https://www.nicovideo.jp/watch_tmp/${props.video.id}`}>
       <div class="mt-5 w-full grid grid-cols-4 gap-2">
         <div class="grid col-span-2 sm:col-span-1">
-          <img src={props.video.thumbnail} alt="thumbnail" class="m-auto" loading="lazy"/>
+          <img src={props.video.thumbnail.url} alt="thumbnail" class="m-auto" loading="lazy"/>
         </div>
         <div class="grid col-span-2 sm:col-span-3">
           <p class="font-bold text-base sm:text-lg">{props.video.title}</p>
