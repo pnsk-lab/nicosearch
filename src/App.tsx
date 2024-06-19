@@ -2,36 +2,28 @@ import type { Component } from 'solid-js'
 import { createSignal, createEffect, Show, For, onMount, createMemo } from 'solid-js'
 import type { Video } from './types'
 import Fuse, { type FuseResult } from 'fuse.js'
+import SearchWorker from './search.ts?worker'
 
 const App: Component = () => {
   const [query, setQuery] = createSignal<string>('')
-  const [videos, setVideos] = createSignal<Video[]>()
-  const [fuse, setFuse] = createSignal<Fuse<Video>>()
+  const [result, setResult] = createSignal<Video[]>()
 
-  onMount(async () => {
-    const res = await fetch('/DB.json').then(res => res.json())
-    const videos = Object.values(res) as Video[]
-    setVideos(videos)
-    setFuse(new Fuse(videos, {
-      keys: ['title', 'description']
-    }))
+  const worker = new SearchWorker()
+
+  createEffect(() => {
+    worker.postMessage(query())
   })
 
-  const result = createMemo(() => {
-    const gotFuse = fuse()
-    if (!gotFuse) {
-      return null
-    }
-    return gotFuse.search(query())
-  })
-
+  worker.onmessage = ({ data }) => {
+    setResult(data)
+  }
   return (
     <div class="px-10 sm:px-20 mb-20">
       <h1 class="mt-20 w-full text-center text-3xl font-cutiveMono">NICOSEARCH</h1>
       <input value={query()} onInput={(e) => {
         setQuery(e.target.value)
       }} placeholder='' class='mt-5 border border-gray-400 border-1 w-full h-14 px-5 rounded-full'/>
-      <Show when={videos} fallback={<div class="text-center text-2xl p-4">Downloading Database...</div>}>
+      <Show when={true} fallback={<div class="text-center text-2xl p-4">Downloading Database...</div>}>
         <Show when={result()?.length !== 0} fallback={<div class="text-center text-2xl p-4">結果がありません...</div>}>
           <For each={result()}>{(v) => <VideoPreview video={v} />}</For>
         </Show>
