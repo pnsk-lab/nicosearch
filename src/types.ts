@@ -2,6 +2,7 @@ export interface Video {
   type: 'essential'
   id: string
   title: string
+  description?: string
   registeredAt: string
   count: { view: number; comment: number; mylist: number; like: number }
   thumbnail: {
