@@ -25,7 +25,7 @@ const App: Component = () => {
       }} placeholder='' class='mt-5 border border-gray-400 border-1 w-full h-14 px-5 rounded-full'/>
       <Show when={true} fallback={<div class="text-center text-2xl p-4">Downloading Database...</div>}>
         <Show when={query() !== ''}>
-          <Show when={result()?.length !== 0} fallback={<div class="text-center text-base sm:text-lg text-gray-800 p-4">検索条件と十分に一致する結果が見つかりません。</div>}>
+          <Show when={result()?.length !== 0} fallback={<div class="text-center text-base sm:text-lg text-gray-800 mt-5">検索条件と十分に一致する結果が見つかりません。</div>}>
             <For each={result()}>{(v) => <VideoPreview video={v} />}</For>
           </Show>
         </Show>
