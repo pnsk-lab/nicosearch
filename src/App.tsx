@@ -20,7 +20,7 @@ const App: Component = () => {
   return (
     <div class="px-10 sm:px-20 mb-20">
       <h1 class="mt-20 w-full text-center text-3xl font-cutiveMono">NICOSEARCH</h1>
-      <input value={query()} onInput={(e) => {
+      <input value={query()} onChange={(e) => {
         setQuery(e.target.value)
       }} placeholder='' class='mt-5 border border-gray-400 border-1 w-full h-14 px-5 rounded-full'/>
       <Show when={true} fallback={<div class="text-center text-2xl p-4">Downloading Database...</div>}>
