@@ -20,7 +20,8 @@ let videos: Video[]
     getFn (video, path) {
       const v = video[path as keyof Video]
       return typeof v === 'string' ? normalize(v) : []
-    }
+    },
+    threshold: 0.4
   })
 })()
 
