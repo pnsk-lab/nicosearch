@@ -21,7 +21,7 @@ const App: Component = () => {
   return (
     <div class="px-10 sm:px-20 mb-20">
       <h1 class="mt-20 w-full text-center text-3xl font-cutiveMono">NICOSEARCH</h1>
-      <input value={query()} onInput={debounce((e) => setQuery(e.target.value), 300)} placeholder='' class='mt-5 border border-gray-400 border-1 w-full h-14 px-5 rounded-full'/>
+      <input value={query()} onInput={debounce((e) => setQuery(e.target.value), 200)} placeholder='' class='mt-5 border border-gray-400 border-1 w-full h-14 px-5 rounded-full'/>
       <Show when={true} fallback={<div class="text-center text-2xl mt-5">Downloading Database...</div>}>
         <Show when={query() !== ''}>
           <Show when={result().length !== 0} fallback={<div class="text-center text-base sm:text-lg text-gray-800 mt-5">検索条件と十分に一致する結果が見つかりません。</div>}>
